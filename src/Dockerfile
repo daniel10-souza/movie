@@ -1,13 +1,8 @@
-FROM node:16-alpine
-
+#DockerFile - app movie
+FROM node:14.17.5
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
 EXPOSE 8181
-
- WORKDIR /app
-
- COPY package*.json .
-
- RUN npm install
-
- COPY . .
-
- ENTRYPOINT [ "node", "server.js" ]
+CMD ["node", "server.js"]
